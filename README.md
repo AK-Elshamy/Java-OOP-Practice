@@ -61,14 +61,15 @@ public class Car {
         yourCar.drive();  // Output: Driving the Red BMW X5... 🚗💨
     }
 }
-1.2 🛠️ Constructors
-A constructor is a special method used to initialize a newly created object. It has the same name as the class and no return type.
+```
+# 1.2 🛠️ Constructors
+** A constructor is a special method used to initialize a newly created object. It has the same name as the class and no return type.
 
 Default Constructor: If you don't define any constructor, Java provides a hidden, no-argument default constructor.
 Parameterized Constructor: Allows you to set initial values for fields when the object is created.
 <!-- end list -->
 
-Java
+```Java
 
 public class Dog {
     String name;
@@ -94,7 +95,8 @@ public class Dog {
         anotherDog.bark(); // Output: Lucy says: Woof! 🐕
     }
 }
-1.3 The First Pillar: 🔐 Encapsulation
+```
+#1.3 The First Pillar: 🔐 Encapsulation
 Encapsulation means bundling data (fields) and the methods that operate on that data within a single unit (the class). It also involves data hiding – restricting direct access to an object's internal state.
 
 Why? Protects data integrity, allows changing internal implementation without affecting users of the class, increases security.
@@ -105,7 +107,7 @@ Provide public methods (getters to retrieve data, setters to modify data) to con
 
 You don't want anyone just directly changing your bank balance! You need controlled methods like deposit() and withdraw().
 
-Java
+```Java
 
 public class BankAccount {
     // 🔐 Private field - hidden from outside direct access
@@ -172,7 +174,9 @@ public class BankAccount {
         myAccount.withdraw(150.0); // Fails
     }
 }
-Mini-Quiz 1 ❓
+```
+
+#Mini-Quiz 1 ❓
 What is the difference between a class and an object?
 Why is encapsulation important in OOP? Give an example.
 What is the purpose of a constructor?
@@ -193,7 +197,7 @@ Method Overriding: A subclass can provide a specific implementation for a method
 
 A Dog is an Animal. It inherits general animal traits but has specific behaviors.
 
-Java
+```Java
 
 // 🧬 Superclass
 class Animal {
@@ -245,7 +249,8 @@ class Dog extends Animal {
         genericAnimal.makeSound(); // Calls Animal's method
     }
 }
-2.2 📦 Packages & Access Modifiers (Revisited)
+```
+#2.2 📦 Packages & Access Modifiers (Revisited)
 Packages: Organize related classes and interfaces (like folders for files). Use the package keyword at the top.
 Access Modifiers: Control visibility:
 public: Accessible from anywhere.
@@ -262,7 +267,7 @@ Runtime Polymorphism (Method Overriding): A subclass provides its own implementa
 📱 Analogy: Smartphone play()
 A MusicPlayer app and a VideoPlayer app might both have a play() button (method). Clicking play() does something different depending on which app (object type) is running.
 
-Java
+```Java
 
 class Shape {
     public void draw() {
@@ -309,7 +314,8 @@ public class DrawingApp {
         }
     }
 }
-2.4 The Fourth Pillar: 🔗 Abstraction
+```
+#2.4 The Fourth Pillar: 🔗 Abstraction
 Abstraction means hiding implementation details and showing only essential features to the user. It helps manage complexity. In Java, abstraction is achieved using abstract classes and interfaces.
 
 Why? Focus on what an object does, not how it does it. Define contracts for subclasses.
@@ -344,7 +350,7 @@ Relationship	Often represents "Is-A" (stronger coupling)	Often represents "Can-D
 Purpose	Provide common base implementation & state	Define a contract of capabilities
 
 Export to Sheets
-Java
+```Java
 
 // 🔗 Interface defining a capability
 interface Callable {
@@ -429,7 +435,8 @@ class SmartPhone extends Device implements Callable, Playable {
         phoneAsPlayable.displayInfo(); // Calls overridden method via interface reference
     }
 }
-Mini-Quiz 2 ❓
+```
+#Mini-Quiz 2 ❓
 Explain the difference between method overloading and method overriding. Which one relates to compile-time polymorphism and which to runtime polymorphism?
 When would you choose an abstract class over an interface?
 What does the super keyword do in Java inheritance?
@@ -448,7 +455,7 @@ Analogy:
 A Car has an Engine (Composition - better). The engine can be swapped out.
 Trying to make Car inherit from Engine makes no sense.
 A SportsCar is a Car (Inheritance - appropriate here).
-Java
+```Java
 
 // Example: Composition
 
@@ -498,7 +505,8 @@ class Car {
         System.out.println("Ford Engine: " + ford.getEngineType());
     }
 }
-3.2 ⚙️ Static vs. Instance Members
+```
+#3.2 ⚙️ Static vs. Instance Members
 Instance Members (Fields/Methods): Belong to a specific object (instance) of the class. Each object has its own copy of instance fields. Accessed via an object reference (e.g., myCar.drive()).
 Static Members (Fields/Methods): Belong to the class itself, not to any specific object. There's only one copy shared among all objects of the class. Accessed using the class name (e.g., Math.sqrt(), Car.numberOfCars).
 Use Cases for static:
@@ -508,7 +516,7 @@ Keeping track of class-level information (e.g., counting how many objects were c
 Factory methods (see Professional level).
 <!-- end list -->
 
-Java
+```Java
 
 public class Counter {
     // Instance variable - each object gets its own copy
@@ -549,12 +557,13 @@ public class Counter {
         System.out.println("Final Total Count (via c1): " + c1.getStaticTotalCount()); // 3 (Works but confusing)
     }
 }
-3.3 🎭 Inner Classes & Anonymous Classes
+```
+#3.3 🎭 Inner Classes & Anonymous Classes
 Inner Class: A class defined inside another class. Can access members (even private) of the enclosing outer class. Useful for logical grouping and encapsulation when one class is only used by another.
 Anonymous Class: An inner class without a name. Defined and instantiated simultaneously. Often used for creating one-off implementations of interfaces or abstract classes (e.g., event listeners in GUIs, Runnables for threads).
 <!-- end list -->
 
-Java
+```Java
 
 interface Greeter {
     void greet();
@@ -613,14 +622,15 @@ public class OuterClass {
         outer.useAnonymous();
     }
 }
-3.4 🔌 Interfaces & Default/Static Methods (Java 8+)
+```
+#3.4 🔌 Interfaces & Default/Static Methods (Java 8+)
 Java 8 significantly enhanced interfaces:
 
 default Methods: Allow adding new methods to interfaces with an implementation without breaking existing classes that implement the interface. Provides a default behavior that implementing classes can use or override.
 static Methods: Allow utility methods related to the interface to be defined directly within the interface itself.
 <!-- end list -->
 
-Java
+```Java
 
 interface MyUtility {
     // Abstract method (pre-Java 8 style)
@@ -664,7 +674,7 @@ public class InterfaceEvolutionDemo {
         impl.displayDefault(); // Calls the overridden default method
     }
 }
-
+```
 3.5 🚀 Java Records (Java 14+ Preview, Java 16+ Standard)
 Records are a concise way to declare classes that are primarily simple data carriers. They automatically generate:
 
@@ -674,7 +684,7 @@ Public getter methods (e.g., x() instead of getX()).
 Implementations of equals(), hashCode(), and toString().
 Great for immutable data transfer objects (DTOs).
 
-Java
+```Java
 
 // 🚀 Record declaration - concise!
 record Point(int x, int y) {
@@ -765,78 +775,107 @@ public class RecordDemo {
         }
     }
 }
-Mini-Quiz 3 ❓
-Why is "Favor Composition over Inheritance" a common OOP design principle?
-What is the main difference between a static method and an instance method?
-What problem do Java Records primarily solve?
-(Answers at the end of the guide)
+```
+# Level 4: Professional 🏆 - Mastering OOP Design & Principles
 
-Level 4: Professional 🏆 - Mastering OOP Design & Principles
-This level focuses on principles and patterns for building robust, maintainable, and scalable OOP applications.
+---
 
-4.1 🧠 SOLID Principles
-SOLID is an acronym for five key design principles that make software designs more understandable, flexible, and maintainable.
+## 4.1 🧠 SOLID Principles
 
-S - Single Responsibility Principle (SRP):
-A class should have only one reason to change.
-Meaning: A class should focus on a single job or responsibility. Avoid creating "God classes" that do everything.
-Benefit: Easier to understand, modify, and test. Reduces coupling.   
-O - Open/Closed Principle (OCP):
-Software entities (classes, modules, functions) should be open for extension but closed for modification.
-Meaning: You should be able to add new functionality (extend) without changing existing, working code (modify). Often achieved using interfaces, abstract classes, and polymorphism.
-Benefit: Reduces risk of introducing bugs into existing code. Promotes reusable designs (e.g., plugin architectures).   
-L - Liskov Substitution Principle (LSP):
-Subtypes must be substitutable for their base types without altering the correctness of the program.
-Meaning: If class S is a subtype of class T, then objects of type T may be replaced with objects of type S without breaking the program. Subclasses should honor the contract defined by the superclass.
-Benefit: Ensures inheritance hierarchies are sound and polymorphism works reliably. Avoids unexpected behavior when using subclasses.
-Violation Example: A Square class inheriting from Rectangle might violate LSP if setting width also changes height (violating the Rectangle contract where width and height can change independently). Composition might be better here.
-I - Interface Segregation Principle (ISP):
-Clients should not be forced to depend upon interfaces they do not use.
-Meaning: Prefer smaller, specific interfaces over large, monolithic ones. Classes should only implement interfaces with methods relevant to them.
-Benefit: Reduces coupling. Prevents classes from having to implement unnecessary methods. Improves code clarity.
-Example: Instead of one large Worker interface with work(), eat(), sleep(), have Workable, Eatable interfaces. A Robot might only implement Workable.   
-D - Dependency Inversion Principle (DIP):
-High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g., interfaces).   
-Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions.
-Meaning: Instead of Class A directly creating/using Class B, Class A should depend on an Interface I, and Class B should implement Interface I. This decouples A from the specific implementation B. Often implemented using Dependency Injection.
-Benefit: Highly flexible and decoupled systems. Easier to swap implementations (e.g., for testing or changing databases).
-4.2 Common Mistakes & Best Practices ✅❌🛑
-❌ Misusing Inheritance: Using extends just for code reuse when there's no true "Is-A" relationship. Leads to fragile hierarchies (LSP violations).
-✅ Best Practice: Favor Composition over Inheritance. Use inheritance thoughtfully for genuine specialization.
-❌ Creating "God Classes": Classes that violate SRP by doing too many unrelated things.
-✅ Best Practice: Adhere to SRP. Break down large classes into smaller, focused ones.
-❌ Tight Coupling: Classes directly depending on concrete implementations of other classes.
-✅ Best Practice: Code to interfaces (DIP). Use Dependency Injection frameworks (like Spring) or manual injection to provide implementations. Reduces dependencies and increases testability.
-❌ Mutable State Everywhere: Allowing object state to be changed freely can lead to bugs and make code hard to reason about, especially in concurrent environments.
-✅ Best Practice: Strive for Immutability. Make objects immutable where possible (all fields final, no setters, return new objects instead of modifying existing ones). Java Records are inherently good for this. Use encapsulation to control state changes carefully when mutability is necessary.
-❌ Ignoring Access Modifiers: Making everything public "just in case".
-✅ Best Practice: Use the most restrictive access modifier possible (private by default). Use protected or package-private thoughtfully. Expose only what's necessary (Encapsulation).
-✅ Proper Use of final:
-Fields: Create constants (static final) or immutable instance fields (final).
-Methods: Prevent overriding by subclasses.
-Classes: Prevent inheritance (e.g., String is final).
-✅ Use Interfaces for Contracts: Define capabilities and expected behavior using interfaces.
-🛑 Not Handling null: Leads to NullPointerException.
-✅ Best Practice: Use Optional (Java 8+), null checks, assertions, or annotations (@NonNull, @Nullable). Design methods to avoid returning null where possible.
-4.3 (Brief Mention) Design Patterns
-Design patterns are reusable solutions to commonly occurring problems in software design. Many rely heavily on OOP principles.
+**SOLID** is an acronym for five key design principles that make software designs more understandable, flexible, and maintainable.
 
-Singleton Pattern: Ensures a class has only one instance and provides a global point of access to it. (Uses private constructor, static instance, static access method).
-Java
+### S - Single Responsibility Principle (SRP):
+A class should have only one reason to change.  
+**Meaning**: A class should focus on a single job or responsibility. Avoid creating "God classes" that do everything.  
+**Benefit**: Easier to understand, modify, and test. Reduces coupling.
 
+---
+
+### O - Open/Closed Principle (OCP):
+Software entities (classes, modules, functions) should be open for extension but closed for modification.  
+**Meaning**: You should be able to add new functionality without changing existing, working code. Use interfaces, abstract classes, and polymorphism.  
+**Benefit**: Reduces risk of introducing bugs into existing code. Promotes reusable designs.
+
+---
+
+### L - Liskov Substitution Principle (LSP):
+Subtypes must be substitutable for their base types without altering the correctness of the program.  
+**Meaning**: Subclasses should honor the contract defined by the superclass.  
+**Benefit**: Ensures inheritance hierarchies are sound.  
+**Violation Example**: `Square` inheriting `Rectangle` and changing width/height behavior.
+
+---
+
+### I - Interface Segregation Principle (ISP):
+Clients should not be forced to depend on interfaces they do not use.  
+**Meaning**: Prefer smaller, specific interfaces over large ones.  
+**Benefit**: Reduces coupling. Improves code clarity.  
+**Example**: Split `Worker` interface into `Workable`, `Eatable`, etc.
+
+---
+
+### D - Dependency Inversion Principle (DIP):
+High-level modules should not depend on low-level modules. Both should depend on abstractions.  
+**Meaning**: Use interfaces to decouple implementations. Use Dependency Injection.  
+**Benefit**: More flexible, testable, and maintainable systems.
+
+---
+
+## 4.2 Common Mistakes & Best Practices ✅❌🛑
+
+- ❌ **Misusing Inheritance**: Using `extends` just for reuse.
+  - ✅ **Best Practice**: Favor Composition over Inheritance.
+
+- ❌ **Creating "God Classes"**
+  - ✅ Break down large classes (SRP).
+
+- ❌ **Tight Coupling**
+  - ✅ Code to interfaces (DIP), use Dependency Injection.
+
+- ❌ **Mutable State Everywhere**
+  - ✅ Prefer Immutability (e.g., Java Records).
+
+- ❌ **Ignoring Access Modifiers**
+  - ✅ Use private/protected thoughtfully.
+
+- ✅ **Use `final`**:
+  - Fields (constants), Methods (no override), Classes (no inheritance).
+
+- ✅ **Use Interfaces for Contracts**
+
+- 🛑 **Not Handling `null`**
+  - ✅ Use `Optional`, null-checks, annotations.
+
+---
+
+## 4.3 (Brief Mention) Design Patterns
+
+Design patterns are reusable solutions to common design problems.
+
+### Singleton Pattern (Java)
+```java
 public class SettingsManager {
-    private static final SettingsManager INSTANCE = new SettingsManager(); // Eager init
-    private SettingsManager() { /* Load settings */ System.out.println("Settings Loaded."); } // Private constructor
+    private static final SettingsManager INSTANCE = new SettingsManager();
+    private SettingsManager() { System.out.println("Settings Loaded."); }
     public static SettingsManager getInstance() { return INSTANCE; }
-    // ... methods to get/set settings ...
 }
-// Usage: SettingsManager settings = SettingsManager.getInstance();
-Factory Pattern: Creates objects without exposing the instantiation logic to the client. Refers to the newly created object through a common interface. (Often uses interfaces/abstract classes and subclasses).
-Java
+```
 
+### Factory Pattern (Java)
+```java
 interface Notification { void send(String message); }
-class EmailNotification implements Notification { public void send(String msg) {System.out.println("Email: "+msg);}}
-class SmsNotification implements Notification { public void send(String msg) {System.out.println("SMS: "+msg);}}
+
+class EmailNotification implements Notification {
+    public void send(String msg) {
+        System.out.println("Email: " + msg);
+    }
+}
+
+class SmsNotification implements Notification {
+    public void send(String msg) {
+        System.out.println("SMS: " + msg);
+    }
+}
 
 class NotificationFactory {
     public Notification createNotification(String type) {
@@ -845,48 +884,70 @@ class NotificationFactory {
         throw new IllegalArgumentException("Unknown type: " + type);
     }
 }
-// Usage:
-// NotificationFactory factory = new NotificationFactory();
-// Notification email = factory.createNotification("EMAIL");
-// email.send("Hello via Factory!");
-  
-Others include: Observer, Strategy, Decorator, Adapter, Facade, etc. Learning these patterns is crucial for professional OOP development.
-🏁 Conclusion & Next Steps
+```
+
+### Others:
+Observer, Strategy, Decorator, Adapter, Facade, etc.
+
+---
+
+## 🏁 Conclusion & Next Steps
+
 You've journeyed through the core concepts, advanced features, and design principles of Object-Oriented Programming in Java! 🥳
 
-Key Takeaways:
+### ✅ Key Takeaways:
+- OOP models real-world entities.
+- 4 Pillars: Encapsulation, Inheritance, Polymorphism, Abstraction.
+- SOLID principles = High-quality code.
+- Favor Composition & Immutability.
+- Modern Java: Default Methods, Records, Optional.
 
-OOP helps build modular, reusable, and maintainable software by modeling real-world entities (Objects) defined by Classes.
-The 4 Pillars (Encapsulation, Inheritance, Polymorphism, Abstraction) provide the foundation for flexible and robust design.
-SOLID principles guide you in creating high-quality, professional code.
-Favor Composition over Inheritance and strive for Immutability and Loose Coupling.
-Modern Java features like Default Methods, Records, and Optional enhance OOP practices.
-What's Next?
+### 🔜 What's Next?
+- ✍️ Practice by building projects and refactoring code.
+- 📚 Study Design Patterns deeply.
+- 🛠️ Explore OOP in frameworks like Spring.
+- 🧪 Learn about testing, mocks, and stubs.
 
-✍️ Practice! Implement these concepts. Build small projects. Refactor procedural code into OOP.
-📚 Learn Design Patterns: Study common patterns like Factory, Singleton, Observer, Strategy, etc.
-🛠️ Explore Frameworks: See how frameworks like Spring heavily utilize OOP principles (especially Dependency Injection).
-🧪 Testing: Learn how OOP facilitates unit testing (e.g., mocking dependencies using interfaces).
-OOP is a journey, not just a destination. Keep coding, keep learning, and keep building amazing things with Java! 💪
+---
 
-💡 Mini-Quiz Answers
-Quiz 1:
+# Mini-Quiz 3 ❓
 
-A class is a blueprint/template. An object is a concrete instance created from that blueprint, existing in memory.
-Encapsulation bundles data and methods, hiding internal state (private fields) and providing controlled access (public getters/setters). It protects data integrity and allows internal changes without breaking external code. Example: BankAccount controlling access to balance via deposit()/withdraw().
-A constructor is a special method used to initialize a new object when it's created (e.g., setting initial field values).
-Quiz 2:
+1. **Why is "Favor Composition over Inheritance" a common OOP design principle?**  
+   - Inheritance creates tight coupling. Composition is more flexible and safer.
 
-Overloading: Same method name, different parameter lists (number/type) in the same class. Resolved at compile time. Overriding: Same method signature (name and parameters) in a subclass providing a specific implementation for an inherited method. Resolved at runtime (Runtime Polymorphism).
-Choose Abstract Class when: You need to provide common state (fields) or some default method implementations for subclasses, and the relationship is clearly "Is-A". Choose Interface when: You need to define a contract (a set of methods/capabilities) that potentially unrelated classes can implement ("Can-Do" relationship), or when a class needs to inherit behavior from multiple sources (Java allows implementing multiple interfaces).
-The super keyword is used in a subclass to:
-Call a constructor of the immediate superclass (e.g., super(arguments); must be the first line in the subclass constructor).
-Access a member (method or field) of the superclass (e.g., super.methodName();).
-Quiz 3:
+2. **What is the main difference between a static method and an instance method?**  
+   - Static: belongs to the class.  
+   - Instance: belongs to the object.
 
-Inheritance creates tight coupling; changes in the superclass can break subclasses. Composition is more flexible, allowing components to be swapped or modified with less impact on the container class. Use inheritance only for true "Is-A" relationships.
-A static method belongs to the class itself and is called using the class name (e.g., Math.random()). It cannot directly access instance members. An instance method belongs to a specific object and is called on an object reference (e.g., myCar.drive()). It can access both instance and static members.
-Java Records primarily solve the problem of boilerplate code for simple data carrier classes. They automatically generate constructors, getters, equals(), hashCode(), and toString(), making the code much more concise and less error-prone for immutable data holders.
-=======
-A simple Java project to practice Object-Oriented Programming concepts. This repository includes examples and exercises demonstrating key OOP principles such as encapsulation, inheritance, polymorphism, and abstraction. Ideal for beginners learning Java and OOP fundamentals.
->>>>>>> c86d7621d531daae290e43d288fc755d9cba8f27
+3. **What problem do Java Records primarily solve?**  
+   - They reduce boilerplate code for immutable data classes.
+
+---
+
+## 💡 Mini-Quiz Answers Summary:
+
+**Quiz 1**
+- Class: blueprint, Object: instance.
+- Encapsulation: hides internal state with controlled access.
+- Constructor: initializes an object.
+
+**Quiz 2**
+- Overloading: compile time, different params. Overriding: runtime, same signature.
+- Abstract Class: common state/methods. Interface: capability contract.
+- `super`: calls superclass constructor or method.
+
+**Quiz 3**
+- Composition > Inheritance for flexibility.
+- Static vs. Instance methods.
+- Java Records reduce boilerplate.
+
+---
+
+## 🗂️ About This Repository
+
+A simple Java project to practice Object-Oriented Programming concepts.  
+This repository includes examples and exercises demonstrating key OOP principles such as encapsulation, inheritance, polymorphism, and abstraction. Ideal for beginners learning Java and OOP fundamentals.
+```
+
+هل تحب أرفع لك الملف الجاهز كـ `.md`؟ أو تحب تنسخه مباشرة وتلصقه عندك؟ 💻
+
