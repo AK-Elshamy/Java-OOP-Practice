@@ -887,3 +887,6 @@ Quiz 3:
 Inheritance creates tight coupling; changes in the superclass can break subclasses. Composition is more flexible, allowing components to be swapped or modified with less impact on the container class. Use inheritance only for true "Is-A" relationships.
 A static method belongs to the class itself and is called using the class name (e.g., Math.random()). It cannot directly access instance members. An instance method belongs to a specific object and is called on an object reference (e.g., myCar.drive()). It can access both instance and static members.
 Java Records primarily solve the problem of boilerplate code for simple data carrier classes. They automatically generate constructors, getters, equals(), hashCode(), and toString(), making the code much more concise and less error-prone for immutable data holders.
+=======
+A simple Java project to practice Object-Oriented Programming concepts. This repository includes examples and exercises demonstrating key OOP principles such as encapsulation, inheritance, polymorphism, and abstraction. Ideal for beginners learning Java and OOP fundamentals.
+>>>>>>> c86d7621d531daae290e43d288fc755d9cba8f27
