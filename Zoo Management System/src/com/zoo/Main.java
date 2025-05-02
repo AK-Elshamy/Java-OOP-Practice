@@ -16,16 +16,18 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        // Create managers
+        System.out.println("🐾 Welcome to the Zoo Management System!");
+
+        // Initialize Managers
         AnimalManager animalManager = new AnimalManager();
         HabitatManager habitatManager = new HabitatManager();
         ZooKeeperManager zooKeeperManager = new ZooKeeperManager();
 
-        // Create utility objects
+        // Initialize Utilities
         InputHandler inputHandler = new InputHandler();
 
-        // Create some habitats
-        Forest amazonForest = new Forest("Amazon Rainforest", 50000, "Tropical", 10000);
+        // Create Habitats
+        Forest amazonForest = new Forest("Amazon Rainforest", 50000, "Tropical", 12000);
         Ocean pacificOcean = new Ocean("Pacific Ocean", 1000000, "Marine", 35.0);
         Desert saharaDesert = new Desert("Sahara Desert", 300000, "Arid", 45.0);
 
@@ -33,70 +35,100 @@ public class Main {
         habitatManager.addHabitat(pacificOcean);
         habitatManager.addHabitat(saharaDesert);
 
-        // Create some animals
+        // Create Animals
         WalkingAnimal elephant = new WalkingAnimal("Elephant", 25, "Amazon Rainforest", true, 4);
-        FlyingAnimal eagle = new FlyingAnimal("Eagle", 5, "Mountains", false, 2.0, 50);
-        Fish clownfish = new Fish("Clownfish", 2, "Pacific Ocean", false, 1.2, true, "Orange and white", "Clownfish");
+        WalkingAnimal lion = new WalkingAnimal("Lion", 8, "Savannah", true, 4);
+        FlyingAnimal eagle = new FlyingAnimal("Eagle", 5, "Mountains", false, 2.1, 60);
+        Bird parrot = new Bird("Polly", 3, "Amazon Rainforest", false, 0.5, 15, "Macaw", "Red and Blue");
+        Fish clownfish = new Fish("Nemo", 2, "Pacific Ocean", false, 1.2, true, "Orange and White", "Clownfish");
+        Fish shark = new Fish("Great White Shark", 15, "Pacific Ocean", false, 2.3, false, "Grey", "Shark");
 
-        // Add animals to the animals manager
+        // Add animals to AnimalManager
         animalManager.addAnimal(elephant);
+        animalManager.addAnimal(lion);
         animalManager.addAnimal(eagle);
+        animalManager.addAnimal(parrot);
         animalManager.addAnimal(clownfish);
+        animalManager.addAnimal(shark);
 
-        // Add animals to habitats
+        // Assign animals to habitats
         amazonForest.addAnimal(elephant);
+        amazonForest.addAnimal(parrot);
         pacificOcean.addAnimal(clownfish);
-        // eagle not added to specific habitat here for demonstration
+        pacificOcean.addAnimal(shark);
+        saharaDesert.addAnimal(lion); // assume lion lives in desert for demo
 
-        // Create a zoo keeper
+        // Create Zoo Keepers
         ZooKeeper keeperJohn = new ZooKeeper(1, "John Doe", "Amazon Rainforest");
+        ZooKeeper keeperSarah = new ZooKeeper(2, "Sarah Lee", "Pacific Ocean");
+        ZooKeeper keeperMike = new ZooKeeper(3, "Mike Brown", "Sahara Desert");
+
         zooKeeperManager.addZooKeeper(keeperJohn);
+        zooKeeperManager.addZooKeeper(keeperSarah);
+        zooKeeperManager.addZooKeeper(keeperMike);
 
-        // Create schedule for the keeper
-        Schedule morningFeeding = new Schedule(1, "Morning Feeding of Amazon Animals",
-                LocalDateTime.of(2024, 6, 1, 9, 0),
-                LocalDateTime.of(2024, 6, 1, 10, 0));
+        // Create Visitors (example usage)
+        Visitor visitorAlice = new Visitor(101, "Alice Johnson", "555-1234");
+        Visitor visitorBob = new Visitor(102, "Bob Smith", "555-5678");
 
-        // Display some info
-        System.out.println("Welcome to the Zoo Management System");
+        // Create Schedules
+        Schedule feedingAmazon = new Schedule(1, "Morning Feeding at Amazon",
+                LocalDateTime.now().withHour(9).withMinute(0), LocalDateTime.now().withHour(10).withMinute(0));
+        Schedule cleaningPacific = new Schedule(2, "Cleaning and Maintenance at Pacific Ocean",
+                LocalDateTime.now().withHour(11).withMinute(0), LocalDateTime.now().withHour(12).withMinute(0));
 
-        // Display all animals
-        System.out.println("\nAnimals in the zoo:");
-        for (Animal animal : animalManager.getAllAnimals()) {
-            System.out.println(animal);
+        // Display overview of animals
+        System.out.println("\n🐅 Animals in the Zoo:");
+        for (Animal a : animalManager.getAllAnimals()) {
+            System.out.println(a);
         }
 
-        // Display all habitats
-        System.out.println("\nHabitats in the zoo:");
-        for (Habitat habitat : habitatManager.getAllHabitats()) {
-            System.out.println(habitat);
+        // Display overview of habitats
+        System.out.println("\n🌍 Habitats in the Zoo:");
+        for (Habitat h : habitatManager.getAllHabitats()) {
+            System.out.println(h);
+            System.out.println("Animals here:");
+            for (Animal ah : h.getAnimals()) {
+                System.out.println("  - " + ah.getName());
+            }
         }
 
         // Display zoo keepers
-        System.out.println("\nZoo Keepers:");
-        for (ZooKeeper keeper : zooKeeperManager.getAllZooKeepers()) {
-            System.out.println(keeper);
+        System.out.println("\n🧑‍🌾 Zoo Keepers:");
+        for (ZooKeeper zk : zooKeeperManager.getAllZooKeepers()) {
+            System.out.println(zk);
         }
+
+        // Display visitors info
+        System.out.println("\n🎟️ Visitors:");
+        System.out.println(visitorAlice);
+        System.out.println(visitorBob);
 
         // Generate reports
         AnimalReport animalReport = new AnimalReport();
         HabitatReport habitatReport = new HabitatReport();
 
-        System.out.println("\nGenerating Animal Details Report:");
+        System.out.println("\n📋 Animal Details Report:");
         animalReport.generateAnimalDetailsReport(animalManager.getAllAnimals());
 
-        System.out.println("\nGenerating Habitat Summary Report:");
-        habitatReport.generateHabitatSummaryReport(habitatManager.getAllHabitats());
+        System.out.println("\n📋 Habitat Details Report:");
+        habitatReport.generateHabitatDetailsReport(habitatManager.getAllHabitats());
 
         // Demonstrate animal behaviors
-        System.out.println("\nAnimal Behaviors:");
+        System.out.println("\n🐾 Animal Behaviors:");
         elephant.walk();
+        lion.walk();
         eagle.makeSound();
+        eagle.feed();
+        parrot.makeSound();
         clownfish.dive();
+        clownfish.swim();
+        clownfish.floatOnWater();
+        shark.swim();
 
-        // Close input handler scanner if used (not used interactively here)
+        // Close the input handler (if used in real input scenarios)
         inputHandler.close();
 
-        System.out.println("\nZoo Management System demo complete.");
+        System.out.println("\n🎉 Zoo Management System demonstration complete. Enjoy your visit!");
     }
 }
