@@ -1,3 +1,5 @@
 .vscode
 *.class
 *.exe
+*.idea
+*.xml
